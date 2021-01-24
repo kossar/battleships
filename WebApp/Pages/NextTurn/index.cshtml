@@ -1,0 +1,13 @@
+﻿@page
+@model WebApp.Pages.NextTurn.Index
+
+<div class="text-center">
+    <h1>Next turn: @Html.Raw(Model.BattleShips!.GetPlayer(true).Name)</h1>
+    
+    <div class="col">
+        <a asp-route-id="@Model.Game!.GameId" asp-route-move="go">
+            <button type="button" class="btn btn-primary">GO!</button>
+        </a>
+    </div>
+    
+</div>

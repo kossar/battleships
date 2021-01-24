@@ -1,0 +1,65 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Battleships</h1>
+</div>
+
+<div class="text-center mt-4 mb-4">
+    <p>Start a New Game</p>
+    
+    <a asp-page="./GameSetup/Index"><button type="button" class="btn btn-primary">New Game</button></a>
+</div>
+
+<h3 class="text-center fw-light mt-4 mb-4">Saved Games</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Option Name
+        </th>
+        <th>
+            Game @Html.DisplayNameFor(model => model.Game[0].Description)
+        </th>
+        <th>
+            Player 1
+        </th>
+        <th>
+            Player 2
+        </th>
+        <th>Board Width</th>
+        <th>Board Height</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Game) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameOption.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerA.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerB.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameOption.BoardWidth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameOption.BoardHeight)
+            </td>
+            <td>
+                <a asp-page="./GamePlay/Index" asp-route-id="@item.GameId">Load Game</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

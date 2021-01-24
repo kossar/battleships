@@ -1,0 +1,87 @@
+﻿@page
+@using Domain.Enums
+@model WebApp.Pages.GameSetup.Index
+
+<div class="text-center mb-5">
+    <h1 class="display-4">New Game Setup</h1>
+</div>
+
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-4">
+            <h4 class="text-center">Players</h4>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PlayerA!.Name" class="control-label">Player 1 Name</label>
+                <input asp-for="PlayerA!.Name" class="form-control"/>
+                <span asp-validation-for="PlayerA!.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlayerA!.EPlayerType" class="control-label">Player 1 Type</label>
+                <select asp-for="PlayerA!.EPlayerType" class="form-control">
+                    <option value="@EPlayerType.Human">Human</option>
+                    @* <option value="@EPlayerType.Ai">AI</option> *@
+                </select>
+                <span asp-validation-for="PlayerA!.EPlayerType" class="text-danger"></span>
+            </div>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PlayerB!.Name" class="control-label">Player 2 Name</label>
+                <input asp-for="PlayerB!.Name" class="form-control"/>
+                <span asp-validation-for="PlayerB!.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlayerB!.EPlayerType" class="control-label">Player 2 Type</label>
+                <select asp-for="PlayerB!.EPlayerType" class="form-control">
+                    <option value="@EPlayerType.Human">Human</option>
+                    @* <option value="@EPlayerType.Ai">AI</option> *@
+                </select>
+                <span asp-validation-for="PlayerB!.EPlayerType" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <h4 class="text-center">Options</h4>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="GameOption!.Name" class="control-label"></label>
+                <input asp-for="GameOption!.Name" class="form-control"/>
+                <span asp-validation-for="GameOption!.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GameOption!.BoardWidth" class="control-label"></label>
+                <input asp-for="GameOption!.BoardWidth" class="form-control" min="10" max="20"/>
+                <span asp-validation-for="GameOption!.BoardWidth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GameOption!.BoardHeight" class="control-label"></label>
+                <input asp-for="GameOption!.BoardHeight" class="form-control" min="10" max="20"/>
+                <span asp-validation-for="GameOption!.BoardHeight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GameOption!.EShipsCanTouch" class="control-label">Ships Can Touch</label>
+                <select asp-for="GameOption!.EShipsCanTouch" class="form-control">
+                    <option value="@EShipsCanTouch.No">No</option>
+                    <option value="@EShipsCanTouch.Corner">Corners</option>
+                    <option value="@EShipsCanTouch.Yes">Yes</option>
+                </select>
+                <span asp-validation-for="GameOption!.EShipsCanTouch" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GameOption!.ENextMoveAfterHit" class="control-label">Next Move After Hit</label>
+                <select asp-for="GameOption!.ENextMoveAfterHit" class="form-control">
+                     <option value="@ENextMoveAfterHit.OtherPlayer">Other Player</option>
+                    <option value="@ENextMoveAfterHit.SamePlayer">Same Player</option>
+                </select>
+                <span asp-validation-for="GameOption!.ENextMoveAfterHit" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center">
+        <input type="submit" value="Start the Game" class="btn btn-primary"/>
+    </div>
+</form>
